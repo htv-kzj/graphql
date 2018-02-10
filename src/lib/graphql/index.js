@@ -1,23 +1,18 @@
-import { makeExecutableSchema } from 'graphql-tools';
-import Saturn from 'saturn';
+import {
+  GraphQLSchema,
+  GraphQLObjectType,
+} from 'graphql';
 
-const saturn = new Saturn(`${__dirname}/collections`);
-const schema = makeExecutableSchema(saturn.makeSchema());
-export default schema;
-// import {
-//   GraphQLSchema,
-//   GraphQLObjectType,
-// } from 'graphql';
-//
-// import {
-//   userQueries,
-// } from './collections/test';
-//
-// export default new GraphQLSchema({
-//   query: new GraphQLObjectType({
-//     name: 'Query',
-//     fields: () => ({
-//       ...userQueries,
-//     }),
-//   }),
-// });
+import {
+  Queries,
+} from './collections/Data/queries';
+
+
+export default new GraphQLSchema({
+  query: new GraphQLObjectType({
+    name: 'Query',
+    fields: () => ({
+      ...Queries,
+    }),
+  }),
+});
